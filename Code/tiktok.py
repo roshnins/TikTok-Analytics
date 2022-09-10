@@ -3,6 +3,10 @@ from TikTokApi import TikTokApi as tiktok
 
 # Import JSON for export of data
 import json
+
+# Import pandas to create dataframes
+import pandas as pd
+
 # Import data processing helper
 from helper import process_results
 
@@ -12,11 +16,11 @@ api = tiktok.get_instance(custom_verifyFp=verifyFp, use_test_endpoints=True)
 
 # Get data by hashtag 'singaporefoodfestival'
 trending = api.by_hashtag('singaporefoodfestival')
-# print(trending)
 
 # Process data
 flattened_data = process_results(trending)
 
-# Export data to json
-with open('export.json', 'w') as f:
-    json.dump(flattened_data, f)
+
+# Convert the preprocessed data to a dataframe
+df = pd.DataFrame.from_dict(flattened_data, orient='index')
+df.to_csv('tiktokdata_clean.csv')
