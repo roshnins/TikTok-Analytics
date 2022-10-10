@@ -18,6 +18,6 @@ The code involves:
 
 Below is how the web application looks like:
 
-![alt text](app.png)
+![alt text](readme/app.png)
 
-![alt text](app2.png)
+![alt text](readme/app2.png)
